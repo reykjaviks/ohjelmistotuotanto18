@@ -13,27 +13,30 @@ import static org.junit.Assert.*;
 public class VarastoTest {
 
     Varasto varasto;
-    double vertailuTarkkuus = 0.0001;
+    static final double vertailuTarkkuus = 0.0001;
+    static final double alkuTilavuus = 10;
+    static final double tyhjaTilavuus = 0;
+    static final double tyhjaSaldo = 0;
 
     @Before
     public void setUp() {
-        varasto = new Varasto(10);
+        varasto = new Varasto(alkuTilavuus);
     }
 
     @Test
     public void konstruktoriLuoTyhjanVaraston() {
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
     public void uudellaVarastollaOikeaTilavuus() {
-        assertEquals(10, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(alkuTilavuus, varasto.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void konstruktoriLuoVarastonJonkaTilavuusOnNolla() {
         varasto = new Varasto(-1);
-        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(tyhjaTilavuus, varasto.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
@@ -46,13 +49,13 @@ public class VarastoTest {
     @Test
     public void konstruktorinNegTilavuusParametriAsettaaVarastonTilavuudeksiNollan() {
         varasto = new Varasto(-1, 100);
-        assertEquals(0, varasto.getTilavuus(), vertailuTarkkuus);
+        assertEquals(tyhjaTilavuus, varasto.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void negAlkusaldoAsettaaSaldoksiNollan() {
         varasto = new Varasto(100, -1);
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
@@ -63,19 +66,20 @@ public class VarastoTest {
 
     @Test
     public void alkuTilavuus() {
-        varasto = new Varasto(20);
-        assertEquals(20, varasto.getTilavuus(), vertailuTarkkuus);
+        double alkuTilavuus = 20;
+        varasto = new Varasto(alkuTilavuus);
+        assertEquals(alkuTilavuus, varasto.getTilavuus(), vertailuTarkkuus);
     }
 
     @Test
     public void alkuSaldo() {
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
     public void negLisaysEiMuutaSaldoa() {
         varasto.lisaaVarastoon(-1);
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
@@ -86,13 +90,13 @@ public class VarastoTest {
 
     @Test
     public void negOttoEiMuutaSaldoa() {
-        assertEquals(0.0, varasto.otaVarastosta(-1), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.otaVarastosta(-1), vertailuTarkkuus);
     }
 
     @Test
     public void varastonTyhjennys() {
         varasto.otaVarastosta(varasto.getSaldo() + 1000);
-        assertEquals(0, varasto.getSaldo(), vertailuTarkkuus);
+        assertEquals(tyhjaSaldo, varasto.getSaldo(), vertailuTarkkuus);
     }
 
     @Test
