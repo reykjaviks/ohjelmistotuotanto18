@@ -1,8 +1,11 @@
 package ohtu.verkkokauppa;
 
 import ohtu.rajapinnat.Kirjanpito;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 
+@Component
 public class KirjanpitoImpl implements Kirjanpito {
     private ArrayList<String> tapahtumat;
 
