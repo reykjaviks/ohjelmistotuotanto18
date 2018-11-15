@@ -27,6 +27,13 @@ public class Stepdefs {
         inputLines.add("new");
     }
 
+    @Given("^user \"([^\"]*)\" with password \"([^\"]*)\" is created$")
+    public void user_with_password_is_created(String username, String password) throws Throwable {
+        inputLines.add("new");
+        inputLines.add(username);
+        inputLines.add(password);
+    }
+
     @When("^username \"([^\"]*)\" and password \"([^\"]*)\" are entered$")
     public void a_username_and_password_are_entered(String username, String password) {
        inputLines.add(username);
