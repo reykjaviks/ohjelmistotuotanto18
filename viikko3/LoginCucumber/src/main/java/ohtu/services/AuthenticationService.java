@@ -39,8 +39,10 @@ public class AuthenticationService {
     }
 
     private boolean invalid(String username, String password) {
-        // validity check of username and password
-
+        String pattern = "(?=.*[0-9@#$%^&+=]).{8,}";
+        if (username.length() < 3 || !password.matches(pattern)) {
+            return true;
+        }
         return false;
     }
 }

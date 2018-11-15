@@ -4,7 +4,11 @@ import ohtu.data_access.InMemoryUserDao;
 import ohtu.data_access.UserDao;
 import ohtu.io.ConsoleIO;
 import ohtu.io.IO;
+import ohtu.io.StubIO;
 import ohtu.services.AuthenticationService;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class App {
 
@@ -47,23 +51,29 @@ public class App {
                     io.print("wrong username or password");
                 }
             }
-
         }
     }
 
     public static void main(String[] args) {
+
         UserDao dao = new InMemoryUserDao();
         IO io = new ConsoleIO();
         AuthenticationService auth = new AuthenticationService(dao);
         new App(io, auth).run();
+
+        /*
+        UserDao dao = new InMemoryUserDao();
+
+        List<String> list = Arrays.asList("new", "eero", "salainen");
+        list.forEach(System.out::println);
+
+        StubIO io = new StubIO(list);
+
+        AuthenticationService auth = new AuthenticationService(dao);
+        new App(io, auth).run();
+        System.out.println(io.getPrints());
+        */
+
     }
-    
-    // testejä debugatessa saattaa olla hyödyllistä testata ohjelman ajamista
-    // samoin kuin testi tekee, eli injektoimalla käyttäjän syötteen StubIO:n avulla
-    //
-    // UserDao dao = new InMemoryUserDao();  
-    // StubIO io = new StubIO("new", "eero", "sala1nen" );   
-    //  AuthenticationService auth = new AuthenticationService(dao);
-    // new App(io, auth).run();
-    // System.out.println(io.getPrints());
+
 }
