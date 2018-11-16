@@ -6,15 +6,21 @@ import ohtu.io.ConsoleIO;
 import ohtu.io.IO;
 import ohtu.io.StubIO;
 import ohtu.services.AuthenticationService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.FileSystemXmlApplicationContext;
+import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Component
 public class App {
-
     private IO io;
     private AuthenticationService auth;
 
+    @Autowired
     public App(IO io, AuthenticationService auth) {
         this.io = io;
         this.auth = auth;
@@ -55,11 +61,18 @@ public class App {
     }
 
     public static void main(String[] args) {
-
+        /*
         UserDao dao = new InMemoryUserDao();
         IO io = new ConsoleIO();
         AuthenticationService auth = new AuthenticationService(dao);
         new App(io, auth).run();
+
+        */
+
+        ApplicationContext ctx = new FileSystemXmlApplicationContext("src/main/resources/spring-context.xml");
+
+        App application = ctx.getBean(App.class);
+        application.run();
 
         /*
         UserDao dao = new InMemoryUserDao();
