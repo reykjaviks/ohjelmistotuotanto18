@@ -1,8 +1,13 @@
+# Ohtu files
+salasanat.txt
+
 *.tmp
+*.swp
 
 # IntelliJ generated files
 .idea
 out/
+*.iml
 
 # Compiled class file
 *.class
@@ -29,7 +34,8 @@ out/
 hs_err_pid*
 
 # Gradle #
-.gradle/
+.gradle
+gradle
 build/
 .build/
 
