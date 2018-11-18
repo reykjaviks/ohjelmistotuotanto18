@@ -28,6 +28,18 @@ public class Stepdefs {
         WebElement element = driver.findElement(By.linkText("register new user"));
         element.click();
     }
+
+    @Given("^user with username \"([^\"]*)\" with password \"([^\"]*)\" is successfully created$")
+    public void user_with_username_with_password_is_successfully_created(String username, String password) throws Throwable {
+        command_new_user_is_selected();
+        registerWith(username, password, password);
+    }
+
+    @Given("^user with username \"([^\"]*)\" and password \"([^\"]*)\" is tried to be created$")
+    public void user_with_username_and_password_is_tried_to_be_created(String username, String password) throws Throwable {
+        command_new_user_is_selected();
+        registerWith(username, password, password);
+    }
     
     @When("^correct username \"([^\"]*)\" and password \"([^\"]*)\" are given$")
     public void correct_username_and_password_are_given(String username, String password) throws Throwable {
@@ -62,6 +74,11 @@ public class Stepdefs {
     @When("^valid username \"([^\"]*)\", password \"([^\"]*)\" and non-matching password confirmation \"([^\"]*)\" are entered$")
     public void valid_username_password_and_non_matching_password_confirmation_are_entered(String username, String password, String passwordConfirmation) throws Throwable {
         registerWith(username, password, passwordConfirmation);
+    }
+
+    @When("^incorrect username \"([^\"]*)\" and incorrect password \"([^\"]*)\" are given$")
+    public void incorrectUsernameAndIncorrectPasswordAreGiven(String username, String password) throws Throwable {
+        logInWith(username, password);
     }
     
     @Then("^user is logged in$")
@@ -124,5 +141,4 @@ public class Stepdefs {
         element = driver.findElement(By.name("signup"));
         element.submit();
     }
-
 }
