@@ -34,11 +34,6 @@ public class KauppaTest {
     }
 
     @Test
-    public void foo() {
-
-    }
-
-    @Test
     // varmistettava, että kauppa pyytää uuden viitenumeron jokaiselle maksutapahtumalle
     public void eriViiteEriMaksutapahtumille() {
         int viite = 10;
