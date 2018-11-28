@@ -1,6 +1,7 @@
 
 package ohtu.intjoukkosovellus;
 
+import ohtu.intjoukkosovellus.domain.IntJoukko;
 import org.junit.Before;
 
 

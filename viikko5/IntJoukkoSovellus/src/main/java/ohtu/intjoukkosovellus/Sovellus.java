@@ -1,5 +1,9 @@
 package ohtu.intjoukkosovellus;
 
+import ohtu.intjoukkosovellus.domain.IntJoukko;
+import ohtu.intjoukkosovellus.service.JoukkoOperaatiot;
+import ohtu.intjoukkosovellus.util.ArrayUtil;
+
 import java.util.Scanner;
 
 public class Sovellus {
@@ -51,7 +55,7 @@ public class Sovellus {
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
         bJoukko = mikaJoukko();
-        c = IntJoukko.yhdiste(aJoukko, bJoukko);
+        c = JoukkoOperaatiot.yhdiste(aJoukko, bJoukko);
         System.out.println("A yhdiste B = " + c.toString());
         return;
     }
@@ -62,7 +66,7 @@ public class Sovellus {
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
         bJoukko = mikaJoukko();
-        c = IntJoukko.leikkaus(aJoukko, bJoukko);
+        c = JoukkoOperaatiot.leikkaus(aJoukko, bJoukko);
         System.out.println("A leikkaus B = " + c.toString());
         return;
     }
@@ -73,7 +77,7 @@ public class Sovellus {
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
         bJoukko = mikaJoukko();
-        c = IntJoukko.erotus(aJoukko, bJoukko);
+        c = JoukkoOperaatiot.erotus(aJoukko, bJoukko);
         System.out.println("A erotus B = " + c.toString());
         return;
     }
@@ -98,7 +102,7 @@ public class Sovellus {
         joukko = mikaJoukko();
         System.out.print("Mikä luku? ");
         kysLuku = lukija.nextInt();
-        boolean kuuluuko = joukko.contains(kysLuku);
+        boolean kuuluuko = ArrayUtil.contains(kysLuku, joukko.getValues());
         if (kuuluuko) {
             System.out.println(kysLuku + " contains joukkoon ");
         } else {
