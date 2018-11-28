@@ -1,52 +1,36 @@
-
 package ohtu.intjoukkosovellus;
 
 public class IntJoukko {
 
-    public final static int KAPASITEETTI = 5, // aloitustalukon koko
-                            OLETUSKASVATUS = 5;  // luotava uusi taulukko on 
-    // näin paljon isompi kuin vanha
+    public final static int KAPASITEETTI = 5; // aloitustalukon koko
+    public final static int OLETUSKASVATUS = 5;  // luotava uusi taulukko on
     private int kasvatuskoko;     // Uusi taulukko on tämän verran vanhaa suurempi.
     private int[] ljono;      // Joukon luvut säilytetään taulukon alkupäässä. 
-    private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla. 
+    private int alkioidenLkm;    // Tyhjässä joukossa alkioiden_määrä on nolla.
+
+    public IntJoukko(int kapasiteetti, int kasvatuskoko) {
+        if (kapasiteetti < 0) {
+            throw new IndexOutOfBoundsException("Kapasiteetti ei voi olla negatiivinen.");
+        }
+        if (kasvatuskoko < 0) {
+            throw new IndexOutOfBoundsException("Kasvatuskoko ei voi olla negatiivinen.");
+        }
+
+        ljono = new int[kapasiteetti];
+        this.kasvatuskoko = kasvatuskoko;
+        alkioidenLkm = 0;
+    }
 
     public IntJoukko() {
-        ljono = new int[KAPASITEETTI];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
-        alkioidenLkm = 0;
-        this.kasvatuskoko = OLETUSKASVATUS;
+        new IntJoukko(KAPASITEETTI, OLETUSKASVATUS);
     }
 
     public IntJoukko(int kapasiteetti) {
-        if (kapasiteetti < 0) {
-            return;
-        }
-        ljono = new int[kapasiteetti];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
-        alkioidenLkm = 0;
-        this.kasvatuskoko = OLETUSKASVATUS;
-
+        new IntJoukko(kapasiteetti, OLETUSKASVATUS);
     }
-    
-    
-    public IntJoukko(int kapasiteetti, int kasvatuskoko) {
-        if (kapasiteetti < 0) {
-            throw new IndexOutOfBoundsException("Kapasitteetti väärin");//heitin vaan jotain :D
-        }
-        if (kasvatuskoko < 0) {
-            throw new IndexOutOfBoundsException("kapasiteetti2");//heitin vaan jotain :D
-        }
-        ljono = new int[kapasiteetti];
-        for (int i = 0; i < ljono.length; i++) {
-            ljono[i] = 0;
-        }
-        alkioidenLkm = 0;
-        this.kasvatuskoko = kasvatuskoko;
 
+    public IntJoukko(int kasvatuskoko) {
+        new IntJoukko(KAPASITEETTI, kasvatuskoko);
     }
 
     public boolean lisaa(int luku) {
