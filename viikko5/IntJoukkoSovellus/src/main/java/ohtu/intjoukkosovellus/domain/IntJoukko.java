@@ -34,7 +34,7 @@ public class IntJoukko {
     }
 
     public int getAlkioidenLkm() {
-        return alkioidenLkm;
+        return this.alkioidenLkm;
     }
 
     private boolean valuesAreEmpty() {
@@ -53,7 +53,7 @@ public class IntJoukko {
 
     public boolean add(int value) {
         int beginning = 0;
-        if (this.valuesAreEmpty()) {
+        if (valuesAreEmpty()) {
             return insert(value, beginning);
         }
         int end = alkioidenLkm;
