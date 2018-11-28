@@ -40,7 +40,7 @@ public class Sovellus {
         System.out.println("");
         System.out.print("Mikä luku lisätään? ");
         lisLuku = lukija.nextInt();
-        joukko.lisaa(lisLuku);
+        joukko.add(lisLuku);
         return;
 
     }
@@ -86,7 +86,7 @@ public class Sovellus {
         joukko = mikaJoukko();
         System.out.print("Mikä luku poistetaan? ");
         lisLuku = lukija.nextInt();
-        joukko.poista(lisLuku);
+        joukko.remove(lisLuku);
         return;
     }
 
@@ -98,9 +98,9 @@ public class Sovellus {
         joukko = mikaJoukko();
         System.out.print("Mikä luku? ");
         kysLuku = lukija.nextInt();
-        boolean kuuluuko = joukko.kuuluu(kysLuku);
+        boolean kuuluuko = joukko.contains(kysLuku);
         if (kuuluuko) {
-            System.out.println(kysLuku + " kuuluu joukkoon ");
+            System.out.println(kysLuku + " contains joukkoon ");
         } else {
             System.out.println(kysLuku + " ei kuulu joukkoon ");
         }
@@ -115,7 +115,7 @@ public class Sovellus {
 
         System.out.println("Tervetuloa joukkolaboratorioon!");
         System.out.println("Käytössäsi ovat joukot A, B ja C.");
-        System.out.println("Komennot ovat lisää(li), poista(p), kuuluu(k), yhdiste(y), erotus(e), leikkaus(le) ja lopetus(quit)(q).");
+        System.out.println("Komennot ovat lisää(li), remove(p), contains(k), yhdiste(y), erotus(e), leikkaus(le) ja lopetus(quit)(q).");
         System.out.println("Joukon nimi komentona tarkoittaa pyyntöä tulostaa joukko.");
 
         Scanner lukija = new Scanner(System.in);
@@ -123,9 +123,9 @@ public class Sovellus {
             luettu = lukija.nextLine();
             if (luettu.equals("lisää") || luettu.equals("li")) {
                 lisaa();
-            } else if (luettu.equalsIgnoreCase("poista") || luettu.equalsIgnoreCase("p")) {
+            } else if (luettu.equalsIgnoreCase("remove") || luettu.equalsIgnoreCase("p")) {
                 poista();
-            } else if (luettu.equalsIgnoreCase("kuuluu") || luettu.equalsIgnoreCase("k")) {
+            } else if (luettu.equalsIgnoreCase("contains") || luettu.equalsIgnoreCase("k")) {
                 kuuluu();
             } else if (luettu.equalsIgnoreCase("yhdiste") || luettu.equalsIgnoreCase("y")) {
                 yhdiste();
@@ -144,9 +144,9 @@ public class Sovellus {
                 break;
             } else {
                 System.out.println("Virheellinen komento! " + luettu);
-                System.out.println("Komennot ovat lisää(li), poista(p), kuuluu(k), yhdiste(y), erotus(e) ja leikkaus(le).");
+                System.out.println("Komennot ovat lisää(li), remove(p), contains(k), yhdiste(y), erotus(e) ja leikkaus(le).");
             }
-            System.out.println("Komennot ovat lisää(li), poista(p), kuuluu(k), yhdiste(y), erotus(e) ja leikkaus(le).");
+            System.out.println("Komennot ovat lisää(li), remove(p), contains(k), yhdiste(y), erotus(e) ja leikkaus(le).");
         }
     }
 }

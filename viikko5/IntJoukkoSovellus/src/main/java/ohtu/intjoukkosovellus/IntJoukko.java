@@ -29,8 +29,7 @@ public class IntJoukko {
         this(kapasiteetti, OLETUSKASVATUS);
     }
 
-    public boolean lisaa(int luku) {
-
+    public boolean add(int luku) {
         int eiOle = 0;
         if (alkioidenLkm == 0) {
             luvut[0] = luku;
@@ -38,7 +37,7 @@ public class IntJoukko {
             return true;
         } else {
         }
-        if (!kuuluu(luku)) {
+        if (!contains(luku)) {
             luvut[alkioidenLkm] = luku;
             alkioidenLkm++;
             if (alkioidenLkm % luvut.length == 0) {
@@ -53,21 +52,7 @@ public class IntJoukko {
         return false;
     }
 
-    public boolean kuuluu(int luku) {
-        int on = 0;
-        for (int i = 0; i < alkioidenLkm; i++) {
-            if (luku == luvut[i]) {
-                on++;
-            }
-        }
-        if (on > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public boolean poista(int luku) {
+    public boolean remove(int luku) {
         int kohta = -1;
         int apu;
         for (int i = 0; i < alkioidenLkm; i++) {
@@ -90,6 +75,22 @@ public class IntJoukko {
 
         return false;
     }
+
+    public boolean contains(int luku) {
+        int on = 0;
+        for (int i = 0; i < alkioidenLkm; i++) {
+            if (luku == luvut[i]) {
+                on++;
+            }
+        }
+        if (on > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //
 
     private void kopioiTaulukko(int[] vanha, int[] uusi) {
         for (int i = 0; i < vanha.length; i++) {
@@ -135,10 +136,10 @@ public class IntJoukko {
         int[] aTaulu = a.toIntArray();
         int[] bTaulu = b.toIntArray();
         for (int i = 0; i < aTaulu.length; i++) {
-            x.lisaa(aTaulu[i]);
+            x.add(aTaulu[i]);
         }
         for (int i = 0; i < bTaulu.length; i++) {
-            x.lisaa(bTaulu[i]);
+            x.add(bTaulu[i]);
         }
         return x;
     }
@@ -150,7 +151,7 @@ public class IntJoukko {
         for (int i = 0; i < aTaulu.length; i++) {
             for (int j = 0; j < bTaulu.length; j++) {
                 if (aTaulu[i] == bTaulu[j]) {
-                    y.lisaa(bTaulu[j]);
+                    y.add(bTaulu[j]);
                 }
             }
         }
@@ -163,10 +164,10 @@ public class IntJoukko {
         int[] aTaulu = a.toIntArray();
         int[] bTaulu = b.toIntArray();
         for (int i = 0; i < aTaulu.length; i++) {
-            z.lisaa(aTaulu[i]);
+            z.add(aTaulu[i]);
         }
         for (int i = 0; i < bTaulu.length; i++) {
-            z.poista(i);
+            z.remove(i);
         }
  
         return z;

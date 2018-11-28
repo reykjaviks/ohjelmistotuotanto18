@@ -2,7 +2,7 @@
 package ohtu.intjoukkosovellus;
 
 import java.util.Arrays;
-import org.junit.Before;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -27,7 +27,7 @@ public class JoukkoOperaatiotTest {
         IntJoukko joukko = new IntJoukko();
         
         for (int luku : luvut) {
-            joukko.lisaa(luku);
+            joukko.add(luku);
         }
         
         return joukko;
