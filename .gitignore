@@ -11,7 +11,7 @@ salasanat.txt
 build/
 .build/
 .gradle/
-bin
+bin/
 
 # IntelliJ
 .idea
