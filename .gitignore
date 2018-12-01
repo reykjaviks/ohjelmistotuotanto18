@@ -1,13 +1,23 @@
 # Ohtu files
 salasanat.txt
 
+# -
 *.tmp
 *.swp
+.classpath
+.project
 
-# IntelliJ generated files
+# Gradle #
+build/
+.build/
+.gradle/
+bin
+
+# IntelliJ
 .idea
 out/
 *.iml
+*.iws
 
 # Compiled class file
 *.class
@@ -17,9 +27,6 @@ out/
 
 # BlueJ files
 *.ctxt
-
-# Mobile Tools for Java (J2ME)
-.mtj.tmp/
 
 # Package Files #
 *.war
@@ -31,16 +38,3 @@ out/
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
-
-# Gradle #
-build/
-.build/
-
-# File-based project format
-*.iws
-
-# mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# Editor-based Rest Client
-.idea/httpRequests
