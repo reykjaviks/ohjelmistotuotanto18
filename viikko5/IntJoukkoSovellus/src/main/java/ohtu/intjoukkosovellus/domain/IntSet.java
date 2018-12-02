@@ -36,13 +36,6 @@ public class IntSet {
 
     public int getSize() { return numOfElements; }
 
-    private boolean insert(int value) {
-        if (setIsFull()) { increaseSet(); }
-        values[numOfElements] = value;
-        numOfElements++;
-        return true;
-    }
-
     public boolean add(int value) {
         if (!setContains(value)) {
             return insert(value);
@@ -88,6 +81,13 @@ public class IntSet {
             tuotos += "}";
             return tuotos;
         }
+    }
+
+    private boolean insert(int value) {
+        if (setIsFull()) { increaseSet(); }
+        values[numOfElements] = value;
+        numOfElements++;
+        return true;
     }
 
     private boolean setIsFull() {
