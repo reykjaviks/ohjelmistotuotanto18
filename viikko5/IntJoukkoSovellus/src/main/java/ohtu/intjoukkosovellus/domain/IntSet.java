@@ -2,10 +2,6 @@ package ohtu.intjoukkosovellus.domain;
 
 import ohtu.intjoukkosovellus.util.CustomArrays;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class IntSet {
     public final static int CAPACITY = 5;
     public final static int INCREASE = 5;
