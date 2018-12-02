@@ -2,78 +2,63 @@ package ohtu.intjoukkosovellus.domain;
 
 import ohtu.intjoukkosovellus.util.ArrayUtil;
 
-public class IntJoukko {
-    public final static int OLETUSKAPASITEETTI = 5;
-    public final static int OLETUSKASVATUS = 5;
+public class IntSet {
+    public final static int CAPACITY = 5;
+    public final static int INCREASE = 5;
+
     private int[] values;
-    private int kasvatuskoko;     // Uusi taulukko on tämän verran vanhaa suurempi.
-    private int alkioidenLkm;
+    private int increase;
+    private int numOfElements;
 
-    public IntJoukko() {
-        this(OLETUSKAPASITEETTI, OLETUSKASVATUS);
+    public IntSet() {
+        this(CAPACITY, INCREASE);
     }
 
-    public IntJoukko(int kapasiteetti) {
-        this(kapasiteetti, OLETUSKASVATUS);
+    public IntSet(int capacity) {
+        this(capacity, INCREASE);
     }
 
-    public IntJoukko(int kapasiteetti, int kasvatuskoko) {
-        if (kapasiteetti < 0) {
+    public IntSet(int capacity, int increase) {
+        if (capacity < 0) {
             throw new IndexOutOfBoundsException("Kapasiteetti ei voi olla negatiivinen.");
         }
-        if (kasvatuskoko < 0) {
+        if (increase < 0) {
             throw new IndexOutOfBoundsException("Kasvatuskoko ei voi olla negatiivinen.");
         }
-        this.values = new int[kapasiteetti];
-        this.kasvatuskoko = kasvatuskoko;
-        alkioidenLkm = 0;
+        this.values = new int[capacity];
+        this.increase = increase;
+        numOfElements = 0;
     }
 
     public int[] getSet() {
-        return this.values;
+        return values;
     }
 
-    public int getSize() {
-        return this.alkioidenLkm;
-    }
-
-    private boolean setIsEmpty() {
-        return this.alkioidenLkm == 0;
-    }
+    public int getSize() { return numOfElements; }
 
     private boolean setIsFull() {
-        return this.alkioidenLkm % this.values.length == 0;
+        return numOfElements % values.length == 0;
     }
 
     private boolean setContains(int value) {
         return ArrayUtil.contains(value, this.values);
     }
 
-    private boolean increaseSetSize() {
+    private boolean increaseSet() {
+        values = ArrayUtil.resize(values, numOfElements + increase);
         return true;
-
     }
 
-    private boolean insert(int value, int index) {
-        values[index] = value;
-        alkioidenLkm++;
+    private boolean insert(int value) {
+        if (setIsFull()) { increaseSet(); }
+        values[numOfElements] = value;
+        numOfElements++;
         return true;
     }
 
     public boolean add(int value) {
-        int beginning = 0;
-        if (setIsEmpty()) {
-            return insert(value, beginning);
-        }
-
-
-        int end = alkioidenLkm;
         if (!setContains(value)) {
-            insert(value, end);
-            if (setIsFull()) {
-                this.values = ArrayUtil.resize(this.values, this.alkioidenLkm + this.kasvatuskoko);
-            }
-            return true;
+            return insert(value);
         }
         return false;
     }
