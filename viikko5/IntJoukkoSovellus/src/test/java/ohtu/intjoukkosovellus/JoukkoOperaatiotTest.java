@@ -8,8 +8,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class JoukkoOperaatiotTest {
-    
-    
+
     @Test
     public void testSomething() {
         IntSet eka = teeJoukko(1,2);

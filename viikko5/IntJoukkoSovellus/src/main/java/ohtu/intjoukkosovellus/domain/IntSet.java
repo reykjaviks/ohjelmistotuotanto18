@@ -43,24 +43,12 @@ public class IntSet {
         return false;
     }
 
-    public boolean remove(int luku) {
-        int kohta = -1;
-        int apu;
-        for (int i = 0; i < numOfElements; i++) {
-            if (luku == values[i]) {
-                kohta = i; //siis luku löytyy tuosta kohdasta :D
-                values[kohta] = 0;
-                break;
-            }
-        }
-        if (kohta != -1) {
-            for (int j = kohta; j < numOfElements - 1; j++) {
-                apu = values[j];
-                values[j] = values[j + 1];
-                values[j + 1] = apu;
-            }
-            numOfElements--;
-            return true;
+    public boolean remove(int value) {
+        if (setContains(value)) {
+            int emptyValue = 0;
+            int index = findIndex(value);
+            values[index] = emptyValue;
+            return moveElementsLeft(index);
         }
         return false;
     }
@@ -83,13 +71,6 @@ public class IntSet {
         }
     }
 
-    private boolean insert(int value) {
-        if (setIsFull()) { increaseSet(); }
-        values[numOfElements] = value;
-        numOfElements++;
-        return true;
-    }
-
     private boolean setIsFull() {
         return numOfElements % values.length == 0;
     }
@@ -100,6 +81,28 @@ public class IntSet {
 
     private boolean increaseSet() {
         values = CustomArrays.resize(values, numOfElements + increase);
+        return true;
+    }
+
+    private int findIndex(int value) {
+        return CustomArrays.findValue(value, values);
+    }
+
+    private boolean insert(int value) {
+        if (setIsFull()) { increaseSet(); }
+        values[numOfElements] = value;
+        numOfElements++;
+        return true;
+    }
+
+    private boolean moveElementsLeft(int index) {
+        int help;
+        for (int i = index; i < numOfElements - 1; i++) {
+            help = values[index];
+            values[i] = values[i + 1];
+            values[i + 1] = help;
+        }
+        numOfElements--;
         return true;
     }
 
