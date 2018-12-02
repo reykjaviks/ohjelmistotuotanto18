@@ -1,6 +1,6 @@
 package ohtu.intjoukkosovellus.domain;
 
-import ohtu.intjoukkosovellus.util.ArrayUtil;
+import ohtu.intjoukkosovellus.util.CustomArrays;
 
 public class IntSet {
     public final static int CAPACITY = 5;
@@ -41,11 +41,11 @@ public class IntSet {
     }
 
     private boolean setContains(int value) {
-        return ArrayUtil.contains(value, this.values);
+        return CustomArrays.contains(value, this.values);
     }
 
     private boolean increaseSet() {
-        values = ArrayUtil.resize(values, numOfElements + increase);
+        values = CustomArrays.resize(values, numOfElements + increase);
         return true;
     }
 

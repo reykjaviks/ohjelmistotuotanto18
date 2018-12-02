@@ -2,7 +2,7 @@ package ohtu.intjoukkosovellus;
 
 import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.service.JoukkoOperaatiot;
-import ohtu.intjoukkosovellus.util.ArrayUtil;
+import ohtu.intjoukkosovellus.util.CustomArrays;
 
 import java.util.Scanner;
 
@@ -102,7 +102,7 @@ public class Sovellus {
         joukko = mikaJoukko();
         System.out.print("Mikä luku? ");
         kysLuku = lukija.nextInt();
-        boolean kuuluuko = ArrayUtil.contains(kysLuku, joukko.getSet());
+        boolean kuuluuko = CustomArrays.contains(kysLuku, joukko.getSet());
         if (kuuluuko) {
             System.out.println(kysLuku + " contains joukkoon ");
         } else {
