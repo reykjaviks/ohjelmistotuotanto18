@@ -36,19 +36,6 @@ public class IntSet {
 
     public int getSize() { return numOfElements; }
 
-    private boolean setIsFull() {
-        return numOfElements % values.length == 0;
-    }
-
-    private boolean setContains(int value) {
-        return CustomArrays.contains(value, this.values);
-    }
-
-    private boolean increaseSet() {
-        values = CustomArrays.resize(values, numOfElements + increase);
-        return true;
-    }
-
     private boolean insert(int value) {
         if (setIsFull()) { increaseSet(); }
         values[numOfElements] = value;
@@ -101,6 +88,19 @@ public class IntSet {
             tuotos += "}";
             return tuotos;
         }
+    }
+
+    private boolean setIsFull() {
+        return numOfElements % values.length == 0;
+    }
+
+    private boolean setContains(int value) {
+        return CustomArrays.contains(value, this.values);
+    }
+
+    private boolean increaseSet() {
+        values = CustomArrays.resize(values, numOfElements + increase);
+        return true;
     }
 
 }
