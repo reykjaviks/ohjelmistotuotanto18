@@ -2,6 +2,10 @@ package ohtu.intjoukkosovellus.domain;
 
 import ohtu.intjoukkosovellus.util.CustomArrays;
 
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
 public class IntSet {
     public final static int CAPACITY = 5;
     public final static int INCREASE = 5;
@@ -25,9 +29,9 @@ public class IntSet {
         if (increase < 0) {
             throw new IndexOutOfBoundsException("Kasvatuskoko ei voi olla negatiivinen.");
         }
-        this.values = new int[capacity];
-        this.increase = increase;
+        values = new int[capacity];
         numOfElements = 0;
+        this.increase = increase;
     }
 
     public int[] getSet() {
@@ -44,9 +48,10 @@ public class IntSet {
     }
 
     public boolean remove(int value) {
+        int emptyValue = 0;
+        int index;
         if (setContains(value)) {
-            int emptyValue = 0;
-            int index = findIndex(value);
+            index = findIndex(value);
             values[index] = emptyValue;
             return moveElementsLeft(index);
         }
@@ -55,19 +60,10 @@ public class IntSet {
 
     @Override
     public String toString() {
-        if (numOfElements == 0) {
-            return "{}";
-        } else if (numOfElements == 1) {
-            return "{" + values[0] + "}";
-        } else {
-            String tuotos = "{";
-            for (int i = 0; i < numOfElements - 1; i++) {
-                tuotos += values[i];
-                tuotos += ", ";
-            }
-            tuotos += values[numOfElements - 1];
-            tuotos += "}";
-            return tuotos;
+        switch(numOfElements) {
+            case 0: return "{}";
+            case 1: return "{" + values[0] + "}";
+            default: return stringBuilder();
         }
     }
 
@@ -95,15 +91,24 @@ public class IntSet {
         return true;
     }
 
-    private boolean moveElementsLeft(int index) {
+    private boolean moveElementsLeft(int startingIndex) {
         int help;
-        for (int i = index; i < numOfElements - 1; i++) {
-            help = values[index];
+        for (int i = startingIndex; i < numOfElements - 1; i++) {
+            help = values[startingIndex];
             values[i] = values[i + 1];
             values[i + 1] = help;
         }
         numOfElements--;
         return true;
+    }
+
+    private String stringBuilder() {
+        String str = "{";
+        for (int i = 0; i < numOfElements - 1; i++) {
+            str += values[i] + ", ";
+        }
+        str += values[numOfElements - 1] + "}";
+        return str;
     }
 
 }

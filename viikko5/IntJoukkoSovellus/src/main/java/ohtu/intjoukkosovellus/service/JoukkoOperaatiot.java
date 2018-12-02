@@ -3,6 +3,7 @@ package ohtu.intjoukkosovellus.service;
 import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.util.CustomArrays;
 
+// *** TODO ***
 public class JoukkoOperaatiot {
     public static IntSet yhdiste(IntSet a, IntSet b) {
         IntSet x = new IntSet();
