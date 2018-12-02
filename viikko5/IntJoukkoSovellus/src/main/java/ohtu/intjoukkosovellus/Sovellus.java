@@ -1,6 +1,6 @@
 package ohtu.intjoukkosovellus;
 
-import ohtu.intjoukkosovellus.domain.IntJoukko;
+import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.service.JoukkoOperaatiot;
 import ohtu.intjoukkosovellus.util.ArrayUtil;
 
@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Sovellus {
 
-    private static IntJoukko A, B, C;
+    private static IntSet A, B, C;
 
     private static String luku() {
         Scanner lukija = new Scanner(System.in);
@@ -16,7 +16,7 @@ public class Sovellus {
         return luettu;
     }
 
-    private static IntJoukko mikaJoukko() {
+    private static IntSet mikaJoukko() {
         String luettu;
         Scanner lukija = new Scanner(System.in);
         luettu = luku();
@@ -37,7 +37,7 @@ public class Sovellus {
 
     private static void lisaa() {
         int lisLuku;
-        IntJoukko joukko;
+        IntSet joukko;
         Scanner lukija = new Scanner(System.in);
         System.out.print("Mihin joukkoon? ");
         joukko = mikaJoukko();
@@ -50,7 +50,7 @@ public class Sovellus {
     }
 
     private static void yhdiste() {
-        IntJoukko aJoukko, bJoukko, c;
+        IntSet aJoukko, bJoukko, c;
         System.out.print("1. joukko? ");
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
@@ -61,7 +61,7 @@ public class Sovellus {
     }
 
     private static void leikkaus() {
-        IntJoukko aJoukko, bJoukko, c;
+        IntSet aJoukko, bJoukko, c;
         System.out.print("1. joukko? ");
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
@@ -72,7 +72,7 @@ public class Sovellus {
     }
 
     private static void erotus() {
-        IntJoukko aJoukko, bJoukko, c;
+        IntSet aJoukko, bJoukko, c;
         System.out.print("1. joukko? ");
         aJoukko = mikaJoukko();
         System.out.print("2. joukko? ");
@@ -83,7 +83,7 @@ public class Sovellus {
     }
 
     private static void poista() {
-        IntJoukko joukko;
+        IntSet joukko;
         int lisLuku;
         Scanner lukija = new Scanner(System.in);
         System.out.print("Mistä joukosta? ");
@@ -95,14 +95,14 @@ public class Sovellus {
     }
 
     private static void kuuluu() {
-        IntJoukko joukko;
+        IntSet joukko;
         int kysLuku;
         Scanner lukija = new Scanner(System.in);
         System.out.print("Mihin joukkoon? ");
         joukko = mikaJoukko();
         System.out.print("Mikä luku? ");
         kysLuku = lukija.nextInt();
-        boolean kuuluuko = ArrayUtil.contains(kysLuku, joukko.getValues());
+        boolean kuuluuko = ArrayUtil.contains(kysLuku, joukko.getSet());
         if (kuuluuko) {
             System.out.println(kysLuku + " contains joukkoon ");
         } else {
@@ -112,9 +112,9 @@ public class Sovellus {
     }
 
     public static void main(String[] args) {
-        A = new IntJoukko();
-        B = new IntJoukko();
-        C = new IntJoukko();
+        A = new IntSet();
+        B = new IntSet();
+        C = new IntSet();
         String luettu;
 
         System.out.println("Tervetuloa joukkolaboratorioon!");

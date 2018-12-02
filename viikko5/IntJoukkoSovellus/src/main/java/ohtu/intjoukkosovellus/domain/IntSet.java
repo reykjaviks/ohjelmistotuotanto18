@@ -29,37 +29,48 @@ public class IntJoukko {
         alkioidenLkm = 0;
     }
 
-    public int[] getValues() {
+    public int[] getSet() {
         return this.values;
     }
 
-    public int getAlkioidenLkm() {
+    public int getSize() {
         return this.alkioidenLkm;
     }
 
-    private boolean valuesAreEmpty() {
+    private boolean setIsEmpty() {
         return this.alkioidenLkm == 0;
     }
 
-    private boolean valuesAreFull() {
+    private boolean setIsFull() {
         return this.alkioidenLkm % this.values.length == 0;
     }
 
+    private boolean setContains(int value) {
+        return ArrayUtil.contains(value, this.values);
+    }
+
+    private boolean increaseSetSize() {
+        return true;
+
+    }
+
     private boolean insert(int value, int index) {
-        this.values[index] = value;
-        this.alkioidenLkm++;
+        values[index] = value;
+        alkioidenLkm++;
         return true;
     }
 
     public boolean add(int value) {
         int beginning = 0;
-        if (valuesAreEmpty()) {
+        if (setIsEmpty()) {
             return insert(value, beginning);
         }
+
+
         int end = alkioidenLkm;
-        if (!ArrayUtil.contains(value, this.values)) {
+        if (!setContains(value)) {
             insert(value, end);
-            if (valuesAreFull()) {
+            if (setIsFull()) {
                 this.values = ArrayUtil.resize(this.values, this.alkioidenLkm + this.kasvatuskoko);
             }
             return true;
@@ -70,7 +81,7 @@ public class IntJoukko {
     public boolean remove(int luku) {
         int kohta = -1;
         int apu;
-        for (int i = 0; i < alkioidenLkm; i++) {
+        for (int i = 0; i < numOfElements; i++) {
             if (luku == values[i]) {
                 kohta = i; //siis luku löytyy tuosta kohdasta :D
                 values[kohta] = 0;
@@ -78,12 +89,12 @@ public class IntJoukko {
             }
         }
         if (kohta != -1) {
-            for (int j = kohta; j < alkioidenLkm - 1; j++) {
+            for (int j = kohta; j < numOfElements - 1; j++) {
                 apu = values[j];
                 values[j] = values[j + 1];
                 values[j + 1] = apu;
             }
-            alkioidenLkm--;
+            numOfElements--;
             return true;
         }
         return false;
@@ -91,17 +102,17 @@ public class IntJoukko {
 
     @Override
     public String toString() {
-        if (alkioidenLkm == 0) {
+        if (numOfElements == 0) {
             return "{}";
-        } else if (alkioidenLkm == 1) {
+        } else if (numOfElements == 1) {
             return "{" + values[0] + "}";
         } else {
             String tuotos = "{";
-            for (int i = 0; i < alkioidenLkm - 1; i++) {
+            for (int i = 0; i < numOfElements - 1; i++) {
                 tuotos += values[i];
                 tuotos += ", ";
             }
-            tuotos += values[alkioidenLkm - 1];
+            tuotos += values[numOfElements - 1];
             tuotos += "}";
             return tuotos;
         }

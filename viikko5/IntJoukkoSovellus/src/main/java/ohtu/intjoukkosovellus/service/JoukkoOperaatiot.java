@@ -1,14 +1,14 @@
 package ohtu.intjoukkosovellus.service;
 
-import ohtu.intjoukkosovellus.domain.IntJoukko;
+import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.util.ArrayUtil;
 
 public class JoukkoOperaatiot {
-    public static IntJoukko yhdiste(IntJoukko a, IntJoukko b) {
-        IntJoukko x = new IntJoukko();
+    public static IntSet yhdiste(IntSet a, IntSet b) {
+        IntSet x = new IntSet();
 
-        int[] aTaulu = ArrayUtil.resize(a.getValues(), a.getAlkioidenLkm());
-        int[] bTaulu = ArrayUtil.resize(b.getValues(), b.getAlkioidenLkm());
+        int[] aTaulu = ArrayUtil.resize(a.getSet(), a.getSize());
+        int[] bTaulu = ArrayUtil.resize(b.getSet(), b.getSize());
 
         for (int i = 0; i < aTaulu.length; i++) {
             x.add(aTaulu[i]);
@@ -19,11 +19,11 @@ public class JoukkoOperaatiot {
         return x;
     }
 
-    public static IntJoukko leikkaus(IntJoukko a, IntJoukko b) {
-        IntJoukko y = new IntJoukko();
+    public static IntSet leikkaus(IntSet a, IntSet b) {
+        IntSet y = new IntSet();
 
-        int[] aTaulu = ArrayUtil.resize(a.getValues(), a.getAlkioidenLkm());
-        int[] bTaulu = ArrayUtil.resize(b.getValues(), b.getAlkioidenLkm());
+        int[] aTaulu = ArrayUtil.resize(a.getSet(), a.getSize());
+        int[] bTaulu = ArrayUtil.resize(b.getSet(), b.getSize());
 
         for (int i = 0; i < aTaulu.length; i++) {
             for (int j = 0; j < bTaulu.length; j++) {
@@ -35,11 +35,11 @@ public class JoukkoOperaatiot {
         return y;
     }
 
-    public static IntJoukko erotus (IntJoukko a, IntJoukko b) {
-        IntJoukko z = new IntJoukko();
+    public static IntSet erotus (IntSet a, IntSet b) {
+        IntSet z = new IntSet();
 
-        int[] aTaulu = ArrayUtil.resize(a.getValues(), a.getAlkioidenLkm());
-        int[] bTaulu = ArrayUtil.resize(b.getValues(), b.getAlkioidenLkm());
+        int[] aTaulu = ArrayUtil.resize(a.getSet(), a.getSize());
+        int[] bTaulu = ArrayUtil.resize(b.getSet(), b.getSize());
 
         for (int i = 0; i < aTaulu.length; i++) {
             z.add(aTaulu[i]);

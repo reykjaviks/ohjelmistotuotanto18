@@ -2,19 +2,19 @@ package ohtu.intjoukkosovellus;
 
 import java.util.Arrays;
 
-import ohtu.intjoukkosovellus.domain.IntJoukko;
+import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.util.ArrayUtil;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class IntJoukkoTest {
+public class IntSetTest {
 
-    IntJoukko joukko;
+    IntSet joukko;
 
     @Before
     public void setUp() {
-        joukko = new IntJoukko();
+        joukko = new IntSet();
         joukko.add(10);
         joukko.add(3);
     }
@@ -22,28 +22,28 @@ public class IntJoukkoTest {
     @Test
     public void lukujaLisattyMaara() {
         joukko.add(4);
-        assertEquals(3, joukko.getAlkioidenLkm());
+        assertEquals(3, joukko.getSize());
     }
 
     @Test
     public void samaLukuMeneeJoukkoonVaanKerran() {
         joukko.add(10);
         joukko.add(3);
-        assertEquals(2, joukko.getAlkioidenLkm());
+        assertEquals(2, joukko.getSize());
     }
 
     @Test
     public void vainLisatytLuvutLoytyvat() {
-        assertTrue(ArrayUtil.contains(10, joukko.getValues()));
-        assertFalse(ArrayUtil.contains(5, joukko.getValues()));
-        assertTrue(ArrayUtil.contains(3, joukko.getValues()));
+        assertTrue(ArrayUtil.contains(10, joukko.getSet()));
+        assertFalse(ArrayUtil.contains(5, joukko.getSet()));
+        assertTrue(ArrayUtil.contains(3, joukko.getSet()));
     }
 
     @Test
     public void poistettuEiOleEnaaJoukossa() {
         joukko.remove(3);
-        assertFalse(ArrayUtil.contains(3, joukko.getValues()));
-        assertEquals(1, joukko.getAlkioidenLkm());
+        assertFalse(ArrayUtil.contains(3, joukko.getSet()));
+        assertEquals(1, joukko.getSize());
     }
     
     @Test
@@ -54,7 +54,7 @@ public class IntJoukkoTest {
         joukko.remove(10);
         joukko.add(99);
 
-        int[] vastaus = ArrayUtil.resize(joukko.getValues(), joukko.getAlkioidenLkm());
+        int[] vastaus = ArrayUtil.resize(joukko.getSet(), joukko.getSize());
 
         Arrays.sort(vastaus);
         assertArrayEquals(odotettu, vastaus);
@@ -67,11 +67,11 @@ public class IntJoukkoTest {
         for (int luku : lisattavat) {
             joukko.add(luku);
         }
-        assertEquals(14, joukko.getAlkioidenLkm());
-        assertTrue(ArrayUtil.contains(11, joukko.getValues()));
+        assertEquals(14, joukko.getSize());
+        assertTrue(ArrayUtil.contains(11, joukko.getSet()));
         joukko.remove(11);
-        assertFalse(ArrayUtil.contains(11, joukko.getValues()));
-        assertEquals(13, joukko.getAlkioidenLkm());
+        assertFalse(ArrayUtil.contains(11, joukko.getSet()));
+        assertEquals(13, joukko.getSize());
     }
     
     @Test
@@ -81,14 +81,14 @@ public class IntJoukkoTest {
     
     @Test
     public void toStringToimiiYhdenKokoiselleJoukolla(){
-        joukko = new IntJoukko();
+        joukko = new IntSet();
         joukko.add(1);
         assertEquals("{1}", joukko.toString());
     }
 
     @Test
     public void toStringToimiiTyhjallaJoukolla(){
-        joukko = new IntJoukko();
+        joukko = new IntSet();
         assertEquals("{}", joukko.toString());
     }     
 }

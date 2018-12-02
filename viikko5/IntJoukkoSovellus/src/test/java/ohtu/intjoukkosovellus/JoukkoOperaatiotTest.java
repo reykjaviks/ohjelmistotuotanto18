@@ -3,7 +3,7 @@ package ohtu.intjoukkosovellus;
 
 import java.util.Arrays;
 
-import ohtu.intjoukkosovellus.domain.IntJoukko;
+import ohtu.intjoukkosovellus.domain.IntSet;
 import ohtu.intjoukkosovellus.service.JoukkoOperaatiot;
 import ohtu.intjoukkosovellus.util.ArrayUtil;
 import org.junit.Test;
@@ -14,11 +14,11 @@ public class JoukkoOperaatiotTest {
     
     @Test
     public void testSomething() {
-        IntJoukko eka = teeJoukko(1,2);
-        IntJoukko toka = teeJoukko(3,4);
+        IntSet eka = teeJoukko(1,2);
+        IntSet toka = teeJoukko(3,4);
         
-        IntJoukko tulos = JoukkoOperaatiot.yhdiste(eka, toka);
-        int[] vastauksenLuvut = ArrayUtil.resize(tulos.getValues(), tulos.getAlkioidenLkm());
+        IntSet tulos = JoukkoOperaatiot.yhdiste(eka, toka);
+        int[] vastauksenLuvut = ArrayUtil.resize(tulos.getSet(), tulos.getSize());
         Arrays.sort(vastauksenLuvut);
         
         int[] odotettu = {1,2,3,4};
@@ -26,8 +26,8 @@ public class JoukkoOperaatiotTest {
         assertArrayEquals(odotettu, vastauksenLuvut);        
     } 
 
-    private IntJoukko teeJoukko(int... luvut) {
-        IntJoukko joukko = new IntJoukko();
+    private IntSet teeJoukko(int... luvut) {
+        IntSet joukko = new IntSet();
         
         for (int luku : luvut) {
             joukko.add(luku);
