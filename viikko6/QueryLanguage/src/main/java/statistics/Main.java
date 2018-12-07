@@ -1,6 +1,12 @@
 package statistics;
 
 import statistics.matcher.*;
+import statistics.matcher.composite.And;
+import statistics.matcher.composite.Or;
+import statistics.matcher.decorator.All;
+import statistics.matcher.decorator.Has.HasAtLeast;
+import statistics.matcher.decorator.Has.HasFewerThan;
+import statistics.matcher.decorator.Not;
 
 public class Main {
     public static void main(String[] args) {
@@ -18,8 +24,14 @@ public class Main {
                              new HasAtLeast(85, "points")
         );
 
-        for (Player player : stats.matches(or)) {
+        Matcher not = new Not( new HasAtLeast(1, "goals") );
+
+        Matcher fewerThan = new HasFewerThan(1, "goals");
+
+        int count = 0;
+        for (Player player : stats.matches(not)) {
             System.out.println( player );
+            count++;
         }
     }
 }

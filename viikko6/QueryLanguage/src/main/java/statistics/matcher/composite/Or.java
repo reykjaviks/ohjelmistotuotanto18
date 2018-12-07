@@ -1,6 +1,7 @@
-package statistics.matcher;
+package statistics.matcher.composite;
 
 import statistics.Player;
+import statistics.matcher.Matcher;
 
 public class Or implements Matcher {
 

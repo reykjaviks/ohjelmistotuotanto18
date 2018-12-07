@@ -1,10 +1,11 @@
 
-package statistics.matcher;
+package statistics.matcher.decorator.Has;
 
 import java.lang.reflect.Method;
 import statistics.Player;
+import statistics.matcher.decorator.Has.Has;
 
-public class HasAtLeast implements Matcher {
+public class HasAtLeast extends Has {
     
     private int value;
     private String fieldName;
@@ -19,7 +20,7 @@ public class HasAtLeast implements Matcher {
         try {                                    
             Method method = p.getClass().getMethod(fieldName);
             int playersValue = (Integer)method.invoke(p);
-            return playersValue>=value;
+            return playersValue >= value;
             
         } catch (Exception ex) {
             System.out.println(ex);
