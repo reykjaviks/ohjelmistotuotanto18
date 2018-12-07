@@ -1,7 +1,6 @@
 package laskin;
 
 public class Sovelluslogiikka {
- 
     private int tulos;
  
     public void plus(int luku) {

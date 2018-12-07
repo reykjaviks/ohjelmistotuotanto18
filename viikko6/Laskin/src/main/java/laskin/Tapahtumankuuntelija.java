@@ -1,9 +1,7 @@
 package laskin;
 
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
+import javafx.event.*;
+import javafx.event.*;
 
 public class Tapahtumankuuntelija implements EventHandler {
     private TextField tuloskentta; 
@@ -23,7 +21,8 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.undo = undo;
         this.sovellus = new Sovelluslogiikka();
     }
-    
+
+    //START ELIZA
     @Override
     public void handle(Event event) {
         int arvo = 0;
