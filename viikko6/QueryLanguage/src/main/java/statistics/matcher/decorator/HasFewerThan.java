@@ -1,4 +1,4 @@
-package statistics.matcher.decorator.Has;
+package statistics.matcher.decorator;
 
 import statistics.Player;
 

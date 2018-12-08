@@ -1,9 +1,8 @@
 
-package statistics.matcher.decorator.Has;
+package statistics.matcher.decorator;
 
 import java.lang.reflect.Method;
 import statistics.Player;
-import statistics.matcher.decorator.Has.Has;
 
 public class HasAtLeast extends Has {
     
