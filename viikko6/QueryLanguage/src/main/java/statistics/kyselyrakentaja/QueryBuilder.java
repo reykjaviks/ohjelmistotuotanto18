@@ -3,6 +3,7 @@ package statistics.kyselyrakentaja;
 import statistics.matcher.Matcher;
 import statistics.matcher.PlaysIn;
 import statistics.matcher.composite.And;
+import statistics.matcher.composite.Or;
 import statistics.matcher.decorator.All;
 import statistics.matcher.decorator.HasAtLeast;
 import statistics.matcher.decorator.HasFewerThan;
@@ -33,6 +34,9 @@ public class QueryBuilder {
 
     public QueryBuilder hasFewerThan(int value, String category) {
         return new QueryBuilder(new And(matcher, new HasFewerThan(value, category)));
+    }
 
+    public QueryBuilder oneOf(Matcher...matchers) {
+        return new QueryBuilder(new Or(matchers));
     }
 }
