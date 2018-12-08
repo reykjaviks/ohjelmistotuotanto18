@@ -25,18 +25,25 @@ public class QueryBuilder {
     }
 
     public QueryBuilder playsIn(String team) {
-        return new QueryBuilder(new And(matcher, new PlaysIn(team)));
+        Matcher playsIn = new PlaysIn(team);
+        return QueryBuilderLisatyllaEhdolla(playsIn);
     }
 
     public QueryBuilder hasAtleast(int value, String category) {
-        return new QueryBuilder(new And(matcher, new HasAtLeast(value, category)));
+        Matcher hasAtleast = new HasAtLeast(value, category);
+        return QueryBuilderLisatyllaEhdolla(hasAtleast);
     }
 
     public QueryBuilder hasFewerThan(int value, String category) {
-        return new QueryBuilder(new And(matcher, new HasFewerThan(value, category)));
+        Matcher hasFewerThan = new HasFewerThan(value, category);
+        return QueryBuilderLisatyllaEhdolla(hasFewerThan);
     }
 
     public QueryBuilder oneOf(Matcher...matchers) {
         return new QueryBuilder(new Or(matchers));
+    }
+
+    private QueryBuilder QueryBuilderLisatyllaEhdolla(Matcher matcher) {
+        return new QueryBuilder(new And(this.matcher, matcher));
     }
 }
