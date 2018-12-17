@@ -16,7 +16,7 @@ public class KPSTekoaly {
         String ekanSiirto = scanner.nextLine();
         String tokanSiirto;
 
-        tokanSiirto = tekoaly.annaSiirto();
+        tokanSiirto = tekoaly.calculateNextMove();
         System.out.println("Tietokone valitsi: " + tokanSiirto);
 
 
@@ -28,9 +28,9 @@ public class KPSTekoaly {
             System.out.print("Ensimmäisen pelaajan siirto: ");
             ekanSiirto = scanner.nextLine();
 
-            tokanSiirto = tekoaly.annaSiirto();
+            tokanSiirto = tekoaly.calculateNextMove();
             System.out.println("Tietokone valitsi: " + tokanSiirto);
-            tekoaly.asetaSiirto(ekanSiirto);
+            tekoaly.setMove(ekanSiirto);
 
         }
 

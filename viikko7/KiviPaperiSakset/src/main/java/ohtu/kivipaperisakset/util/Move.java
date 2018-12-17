@@ -1,12 +1,12 @@
 package ohtu.kivipaperisakset.util;
 
 public class Move {
-    private Moves move;
+    private Moves moveName;
     private int numOfTimesUsed;
 
-    public Move(Moves move) {
+    public Move(Moves moveName) {
         this();
-        this.move = move;
+        this.moveName = moveName;
     }
 
     public Move() {
@@ -17,15 +17,15 @@ public class Move {
         return numOfTimesUsed;
     }
 
-    public void setMove(Moves move) {
-        this.move = move;
+    public void setMoveName(Moves moveName) {
+        this.moveName = moveName;
     }
 
     public void setNumOfTimesUsed(int amount) {
         numOfTimesUsed = amount;
     }
 
-    public Moves getMove() {
-        return move;
+    public Moves getMoveName() {
+        return moveName;
     }
 }

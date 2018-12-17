@@ -1,16 +1,14 @@
 package ohtu.kivipaperisakset.logic;
 
-import ohtu.kivipaperisakset.logic.AI;
-
 public class Tekoaly implements AI {
 
-    int siirto;
+    private int siirto;
 
     public Tekoaly() {
         siirto = 0;
     }
 
-    public String annaSiirto() {
+    public String calculateNextMove() {
         siirto++;
         siirto = calculateNextMove(siirto);
 
@@ -21,7 +19,7 @@ public class Tekoaly implements AI {
         }
     }
 
-    public void asetaSiirto(String ekanSiirto) {
+    public void setMove(String ekanSiirto) {
     }
 
     private int calculateNextMove(int move) {

@@ -1,6 +1,6 @@
 package ohtu.kivipaperisakset;
 
-import ohtu.kivipaperisakset.logic.TekoalyParannettu;
+import ohtu.kivipaperisakset.logic.MuistavaTekoaly;
 
 import java.util.Scanner;
 
@@ -12,14 +12,14 @@ public class KPSParempiTekoaly {
 
     public void pelaa() {
         Tuomari tuomari = new Tuomari();
-        TekoalyParannettu tekoaly = new TekoalyParannettu(20);
+        MuistavaTekoaly tekoaly = new MuistavaTekoaly(20);
 
         System.out.print("Ensimmäisen pelaajan siirto: ");
         String ekanSiirto = scanner.nextLine();
         String tokanSiirto;
 
 
-        tokanSiirto = tekoaly.annaSiirto();
+        tokanSiirto = tekoaly.calculateNextMove();
         System.out.println("Tietokone valitsi: " + tokanSiirto);
 
 
@@ -31,9 +31,9 @@ public class KPSParempiTekoaly {
             System.out.print("Ensimmäisen pelaajan siirto: ");
             ekanSiirto = scanner.nextLine();
 
-            tokanSiirto = tekoaly.annaSiirto();
+            tokanSiirto = tekoaly.calculateNextMove();
             System.out.println("Tietokone valitsi: " + tokanSiirto);
-            tekoaly.asetaSiirto(ekanSiirto);
+            tekoaly.setMove(ekanSiirto);
 
         }
 
