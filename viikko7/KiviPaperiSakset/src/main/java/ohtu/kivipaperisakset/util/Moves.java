@@ -1,5 +1,5 @@
 package ohtu.kivipaperisakset.util;
 
-public enum Move {
+public enum Moves {
     KIVI, PAPERI, SAKSET
 }
