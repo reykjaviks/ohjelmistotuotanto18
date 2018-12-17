@@ -1,9 +1,9 @@
+package ohtu.kivipaperisakset.logic;
 
-package ohtu.kivipaperisakset;
+import ohtu.kivipaperisakset.logic.AI;
 
 // "Muistava tekoäly"
-
-public class TekoalyParannettu {
+public class TekoalyParannettu implements AI {
   private String[] muisti;
   private int vapaaMuistiIndeksi;
 
@@ -18,14 +18,11 @@ public class TekoalyParannettu {
       for(int i = 1; i < muisti.length; i++) {
         muisti[i-1] = muisti[i];
       }
-      
       vapaaMuistiIndeksi--;
     }
-    
     muisti[vapaaMuistiIndeksi] = siirto;    
     vapaaMuistiIndeksi++;
   }
-
   
   public String annaSiirto() {
     if(vapaaMuistiIndeksi == 0 || vapaaMuistiIndeksi == 1) {
@@ -37,7 +34,6 @@ public class TekoalyParannettu {
     int k = 0;
     int p = 0;
     int s = 0;
-    
     
     for(int i = 0; i < vapaaMuistiIndeksi - 1; i++) {
       if(viimeisinSiirto.equals(muisti[i])) {

@@ -1,6 +1,6 @@
 package ohtu.kivipaperisakset;
 
-import java.util.Scanner;
+import ohtu.kivipaperisakset.logic.TekoalyParannettu;
 
 import java.util.Scanner;
 

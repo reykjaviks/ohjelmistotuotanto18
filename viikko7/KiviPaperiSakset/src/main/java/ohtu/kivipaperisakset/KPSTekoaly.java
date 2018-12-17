@@ -1,5 +1,7 @@
 package ohtu.kivipaperisakset;
 
+import ohtu.kivipaperisakset.logic.Tekoaly;
+
 import java.util.Scanner;
 
 public class KPSTekoaly {
