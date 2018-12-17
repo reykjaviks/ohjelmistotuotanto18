@@ -3,23 +3,22 @@ package ohtu.kivipaperisakset.util;
 public class MostPopularMove {
 
     public static String calculate(int numOfRocks, int numOfPapers, int numOfScissors) {
-        Move mostPopularMove = Move.KIVI;
-        int numberOfMoves = 0;
+        Move mostPopularMove = new Move();
 
-        if (numOfRocks > numberOfMoves) {
-            mostPopularMove = Move.KIVI;
-            numberOfMoves = numOfRocks;
+        if (numOfRocks > mostPopularMove.getNumOfTimesUsed()) {
+            mostPopularMove.setMove(Moves.KIVI);
+            mostPopularMove.setNumOfTimesUsed(numOfRocks);
         }
-        if (numOfPapers > numberOfMoves) {
-            mostPopularMove = Move.PAPERI;
-            numberOfMoves = numOfPapers;
+        if (numOfPapers > mostPopularMove.getNumOfTimesUsed()) {
+            mostPopularMove.setMove(Moves.PAPERI);
+            mostPopularMove.setNumOfTimesUsed(numOfPapers);
         }
-        if (numOfScissors > numberOfMoves) {
-            mostPopularMove = Move.SAKSET;
-            numberOfMoves = numOfScissors;
+        if (numOfScissors > mostPopularMove.getNumOfTimesUsed()) {
+            mostPopularMove.setMove(Moves.SAKSET);
+            mostPopularMove.setNumOfTimesUsed(numOfScissors);
         }
 
-        switch (mostPopularMove) {
+        switch (mostPopularMove.getMove()) {
             case KIVI: return "k";
             case PAPERI: return "p";
             default: return "s";
