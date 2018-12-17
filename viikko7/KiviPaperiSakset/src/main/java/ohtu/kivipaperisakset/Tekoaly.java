@@ -10,15 +10,17 @@ public class Tekoaly {
 
     public String annaSiirto() {
         siirto++;
-        siirto = siirto % 3;
+        siirto = calculateNextMove(siirto);
 
-        if (siirto == 0) {
-            return "k";
-        } else if (siirto == 1) {
-            return "p";
-        } else {
-            return "s";
+        switch (siirto) {
+            case 0: return "k";
+            case 1: return "p";
+            default: return "s";
         }
+    }
+
+    public int calculateNextMove(int move) {
+        return move % 3;
     }
 
     void asetaSiirto(String ekanSiirto) {
